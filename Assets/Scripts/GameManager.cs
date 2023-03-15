@@ -6,31 +6,38 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField]Phase1Spawn p1s;
     [SerializeField]PlayerController player;
+    public static GameManager ins;
     public CamFollow cam;
-
+    public bool phase1;
+    public bool phase2;
+    public bool phase3;
+    public int stage1KillCount;
+    public int stage2killCount;
+    public bool bossDead;
     public GameObject deadUI;
     public TextMeshProUGUI Anou;
     bool isOver = false;
-
+    private void Instance()
+    {
+        if (ins == null)
+        {
+            ins = this;
+        }
+    }
     private void Awake() {
-        p1s.isDead = GetComponent<Phase1Spawn>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        Instance();
+        stage1KillCount = 0;
+        stage2killCount = 0;
+        bossDead = false;
+        phase1 = false;
+        phase2 = false;
+        phase3 = false;
         
     }
-
-    // public void Phase1ON(){
-    //         player.speed = 0;
-    //         player.jumpSpeed = 0;
-    //         player.sprintSpeed = 0;
-    // }
-    // public void PhaseOFF(){
-    //         player.speed = 3;
-    //         player.jumpSpeed = 4;
-    //         player.sprintSpeed = 5;
-    // }
+    
     public void GameOver(){
         if(isOver == false){
         isOver = true;

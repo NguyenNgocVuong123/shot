@@ -6,7 +6,6 @@ public class PickUpGun : MonoBehaviour
 {
     public GameObject useGun;
     public GameObject arm;
-    public GameObject SpawnerPhase1;
     public GameObject ammo;
     public float speed;
     private void Update() {
@@ -17,9 +16,7 @@ public class PickUpGun : MonoBehaviour
             Destroy(gameObject);
             useGun.SetActive(true);
             arm.SetActive(true);
-            SpawnerPhase1.SetActive(true);
             ammo.SetActive(true);
-            // FindObjectOfType<GameManager>().Phase1ON();
         }
     }
 }

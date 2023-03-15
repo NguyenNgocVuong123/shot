@@ -9,7 +9,6 @@ public class Trigger1 : MonoBehaviour
         if(other.gameObject.tag =="Player"){
             Destroy(gameObject);
             SpawnerPhase2.SetActive(true);
-            // FindObjectOfType<GameManager>().Phase1ON();
         }
     }
 }

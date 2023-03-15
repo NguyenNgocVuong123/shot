@@ -8,11 +8,18 @@ public class PlayerController : MonoBehaviour
     float moveSide;
     float moveUp;
     bool isGrounded = false;
-
+    public static PlayerController ins;
     public float speed;
     public float sprintSpeed;
     public float currenSpeed;
     public float jumpSpeed;
+    public bool Stopped;
+    public bool keyOn;
+    public GameObject phase1Spawn;
+    public GameManager gameManager;
+    public GameObject keyItem;
+    //
+ 
     //
     public int maxHealth = 100;
     public int currentHealth;
@@ -20,13 +27,37 @@ public class PlayerController : MonoBehaviour
     //
     [SerializeField] Rigidbody rb;
 
+    
+    private void Awake() {
+        Instance();
+        
+    }
     private void Start() {
         currentHealth = maxHealth;
         healthController.SetMaxHealth(maxHealth);
+        Stopped = false;
+        keyOn = false;
+    }
+    private void Instance(){
+        if(ins == null){
+            ins = this;
+        }
     }
     private void Update() {
         MoveInput();
         Jumping();
+        
+        if(Stopped == true)
+        {
+            speed = 0;
+            sprintSpeed = 0;
+            jumpSpeed = 0;
+        }else{
+            speed = 3;
+            sprintSpeed =5;
+            jumpSpeed = 4;
+        }
+        EndPhase1();
     }
     private void LateUpdate() {
             Moving();
@@ -59,12 +90,41 @@ public class PlayerController : MonoBehaviour
         healthController.SetHealth(currentHealth);
         if(currentHealth<=0){
             FindObjectOfType<GameManager>().GameOver();
-            
         }
     }
+    private void EndPhase1()
+    {
+        if(gameManager.stage1KillCount == 5)
+        {
+            Stopped = false;
+        }
+    }
+    private void EndPhase2()
+    {
+        if(gameManager.stage1KillCount == 5)
+        {
+            keyOn = true;
+            keyItem.SetActive(true);
+        }
+    }
+      
     private void OnCollisionEnter(Collision other) {
         if(other.gameObject.tag == "Ground")
             isGrounded = true;
+        if(other.gameObject.tag == "PickUpGun"){
+            Stopped = true;
+            phase1Spawn.SetActive(true);
+        }
+        if(other.gameObject.tag == "MeleEnemy"){
+            TakeDmg(20);
+        }
+        if(other.gameObject.tag == "EnemyBullet"){
+            TakeDmg(25);
+        }
+        if(other.gameObject.tag == "Key"){
+            keyOn = true;
+        }
+            
 
     }
 }

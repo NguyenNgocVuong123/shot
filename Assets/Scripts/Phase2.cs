@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class Phase2 : MonoBehaviour
 {
-    public GameObject rangeEnemy1;
+    public static Phase1 ins;
+    public GameObject rangeEnemy;
+    private int xPos,zPos1,zPos2;
     private void Start() {
-        
-    }
-    private void Update(){
-        Instantiate(rangeEnemy1, new Vector3(26,3,20), Quaternion.identity);
-        Instantiate(rangeEnemy1, new Vector3(26,3,-10), Quaternion.identity);
+        xPos = 30;
+        zPos1 = 15;
+        zPos2 = -15;
+        Instantiate(rangeEnemy, new Vector3(xPos, 2f, zPos1), Quaternion.identity);
+        Instantiate(rangeEnemy, new Vector3(xPos, 2f, zPos2), Quaternion.identity);
     }
 }

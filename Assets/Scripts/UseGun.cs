@@ -5,9 +5,7 @@ using TMPro;
 public class UseGun : MonoBehaviour
 {
     public GameObject bullet;
-
     public float shootForce, upwardForce;
-
     //Thông tin của súng
     public float timeBetweenShooting, spread, reLoadTime, timeBetweenShoots;
     public int magazinSize, bulletsPerTap;
@@ -16,7 +14,6 @@ public class UseGun : MonoBehaviour
     //recoil
     public Rigidbody playerBodys;
     public float recoilForce;
-
 
     bool shooting, readyToShoot, reLoading;
     //tia súng
@@ -31,7 +28,7 @@ public class UseGun : MonoBehaviour
     private void Awake() {
         bulletLeft = magazinSize; //phải đảm bảo băng đạn đầy
         readyToShoot = true;
-
+        
     }
 
      private void Update() {
@@ -95,7 +92,6 @@ public class UseGun : MonoBehaviour
         }
         bulletLeft--;
         bulletShot++;
-
         //tạo khoảng dừng giữa mỗi lần bắn bằng cách gọi  hàm ResetShoot
         if(allowInvoke){//chỉ gọi 1 lần mỗi lượt bắn
             Invoke("ResetShoot", timeBetweenShooting);

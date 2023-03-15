@@ -6,9 +6,13 @@ TagManager:
   tags:
   - Ground
   - PickUpGun
+  - PlayerBullet
+  - MeleEnemy
+  - RangeEnemy
+  - Boss
+  - Trigger1
   - EnemyBullet
-  - Bullet
-  - Enemy
+  - Key
   layers:
   - Default
   - TransparentFX
