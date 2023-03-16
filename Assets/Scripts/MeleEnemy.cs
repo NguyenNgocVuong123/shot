@@ -21,7 +21,6 @@ public class MeleEnemy : MonoBehaviour
         if(enemy.transform == player.transform)
             enemy.position = transform.position;
         enemy.AddForce(speed * Time.deltaTime * transform.forward, ForceMode.Impulse);
-        EnemyDie();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -29,15 +28,12 @@ public class MeleEnemy : MonoBehaviour
         if (other.gameObject.tag== "PlayerBullet")
         {
             health -= 15;
+            if (health <= 0)
+            {
+                Destroy(gameObject);
+                GameManager.ins.stage1KillCount++;
+            }
         }
     }
 
-    void EnemyDie()
-    {
-        if (health <= 0)
-        {
-            Destroy(gameObject);
-            GameManager.ins.stage1KillCount++;
-        }
-    }
 }

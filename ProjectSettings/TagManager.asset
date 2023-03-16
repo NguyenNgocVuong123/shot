@@ -13,6 +13,7 @@ TagManager:
   - Trigger1
   - EnemyBullet
   - Key
+  - BossBullet
   layers:
   - Default
   - TransparentFX

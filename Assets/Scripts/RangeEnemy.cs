@@ -25,7 +25,6 @@ public class RangeEnemy : MonoBehaviour
         if(enemy.transform == player.transform)
             enemy.position = transform.position;
         enemy.AddForce(speed * Time.deltaTime * transform.forward, ForceMode.Impulse);
-        EnemyDie();
         ShootPlayer();
     }
     private void ShootPlayer(){
@@ -48,15 +47,11 @@ public class RangeEnemy : MonoBehaviour
         if (other.gameObject.tag== "PlayerBullet")
         {
             health -= 20;
-        }
-    }
-
-    void EnemyDie()
-    {
-        if (health <= 0)
+            if (health <= 0)
         {
             Destroy(gameObject);
             GameManager.ins.stage2killCount++;
+        }
         }
     }
 }

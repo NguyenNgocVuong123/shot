@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Phase2 : MonoBehaviour
 {
-    public static Phase1 ins;
     public GameObject rangeEnemy;
     private int xPos,zPos1,zPos2;
     private void Start() {

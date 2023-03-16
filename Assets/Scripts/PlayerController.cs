@@ -14,12 +14,10 @@ public class PlayerController : MonoBehaviour
     public float currenSpeed;
     public float jumpSpeed;
     public bool Stopped;
-    public bool keyOn;
     public GameObject phase1Spawn;
     public GameManager gameManager;
     public GameObject keyItem;
     //
- 
     //
     public int maxHealth = 100;
     public int currentHealth;
@@ -36,7 +34,6 @@ public class PlayerController : MonoBehaviour
         currentHealth = maxHealth;
         healthController.SetMaxHealth(maxHealth);
         Stopped = false;
-        keyOn = false;
     }
     private void Instance(){
         if(ins == null){
@@ -53,11 +50,12 @@ public class PlayerController : MonoBehaviour
             sprintSpeed = 0;
             jumpSpeed = 0;
         }else{
-            speed = 3;
-            sprintSpeed =5;
+            speed = 5;
+            sprintSpeed = 8;
             jumpSpeed = 4;
         }
         EndPhase1();
+        EndPhase2();
     }
     private void LateUpdate() {
             Moving();
@@ -101,10 +99,10 @@ public class PlayerController : MonoBehaviour
     }
     private void EndPhase2()
     {
-        if(gameManager.stage1KillCount == 5)
+        if(gameManager.stage2killCount == 4)
         {
-            keyOn = true;
-            keyItem.SetActive(true);
+                keyItem.SetActive(true);
+            
         }
     }
       
@@ -121,8 +119,11 @@ public class PlayerController : MonoBehaviour
         if(other.gameObject.tag == "EnemyBullet"){
             TakeDmg(25);
         }
-        if(other.gameObject.tag == "Key"){
-            keyOn = true;
+        if(other.gameObject.tag == "Boss"){
+            TakeDmg(80);
+        }
+        if(other.gameObject.tag == "BossBullet"){
+            TakeDmg(40);
         }
             
 

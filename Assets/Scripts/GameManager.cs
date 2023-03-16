@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public GameObject deadUI;
     public TextMeshProUGUI Anou;
     bool isOver = false;
+    bool isWin = false;
     private void Instance()
     {
         if (ins == null)
@@ -32,12 +33,15 @@ public class GameManager : MonoBehaviour
         stage1KillCount = 0;
         stage2killCount = 0;
         bossDead = false;
-        phase1 = false;
-        phase2 = false;
-        phase3 = false;
         
     }
-    
+    private void Update() {
+        Debug.Log("phase1: "+ stage1KillCount);
+        Debug.Log("phase2: "+ stage2killCount);
+        if(bossDead == true){
+            Win();
+        }
+    }
     public void GameOver(){
         if(isOver == false){
         isOver = true;
@@ -48,6 +52,19 @@ public class GameManager : MonoBehaviour
         player.enabled = false;
         Time.timeScale = 0f;
         Anou.text = "You DIE";
+        deadUI.SetActive(true);
+        
+        }
+    }
+    public void Win(){
+        if(isWin == false){
+        isWin = true;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        cam.enabled = false;
+        player.enabled = false;
+        Time.timeScale = 0f;
+        Anou.text = "You Win";
         deadUI.SetActive(true);
         
         }

@@ -36,7 +36,7 @@ public class CustomBullet : MonoBehaviour
 
     }
 private void OnCollisionEnter(Collision other) {
-    if(other.gameObject.tag =="MeleEnemy" || other.gameObject.tag =="Ground"||other.gameObject.tag =="RangeEnemy"||other.gameObject.tag =="Player")
+    if(other.gameObject.tag =="MeleEnemy" || other.gameObject.tag =="Ground"||other.gameObject.tag =="RangeEnemy"||other.gameObject.tag =="Player"||other.gameObject.tag =="Boss")
         ClearBullet();
 }
 }
