@@ -75,6 +75,6 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
     }
     public void HomeMenu(){ // quay lại trang Home
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("Home");
     }
 }

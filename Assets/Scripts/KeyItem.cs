@@ -6,6 +6,9 @@ public class KeyItem : MonoBehaviour
 {
     public float speed;
     public Component bossDoor;
+    public GameObject keyUI;
+    public GameObject key;
+
 
     private void Update() {
         gameObject.transform.Rotate(Vector3.up * speed *Time.deltaTime);
@@ -13,7 +16,8 @@ public class KeyItem : MonoBehaviour
     private void OnCollisionEnter(Collision other) {
         if(other.gameObject.tag == "Player"){
             bossDoor.GetComponent<BoxCollider>().enabled =true;
-            Destroy(gameObject);
+            keyUI.SetActive(true);
+            key.SetActive(false);
         }
 
     }

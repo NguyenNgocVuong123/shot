@@ -760,7 +760,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &42107643981936642
 Transform:
   m_ObjectHideFlags: 0
@@ -878,10 +878,10 @@ MonoBehaviour:
   speedMeleMode: 500
   speedMeleReady: 15
   boss: {fileID: 5524272497640021670}
-  health: 1000
   bossPos: {fileID: 42107643981936642}
+  maxHealth: 1000
   currentHealth: 0
-  bossHealthController: {fileID: 4917859038506549477, guid: ef04d29c330669140bbd3a0246c68c7d, type: 3}
+  bossHealthController: {fileID: 0}
 --- !u!95 &6060063540996217717
 Animator:
   serializedVersion: 3

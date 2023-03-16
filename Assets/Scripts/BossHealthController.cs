@@ -8,7 +8,7 @@ public class BossHealthController : MonoBehaviour
     public Slider slider;
     
     public void SetMaxBossHealth(int bossHealth){
-        slider.maxValue = bossHealth;
+        slider.value=bossHealth;
         slider.value = bossHealth;
     }
     public void SetBossHealth(int bossHealth){

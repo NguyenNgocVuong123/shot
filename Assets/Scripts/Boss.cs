@@ -95,15 +95,14 @@ public class Boss : MonoBehaviour
     private void resetAttack(){
         attacked = false;
     }
-    private void OnCollisionEnter(Collision other) {
-         if (other.gameObject.tag== "PlayerBullet"){
-            currentHealth -= 40;
-            bossHealthController.SetBossHealth()
-            if(currentHealth<=0){
-                Destroy(gameObject);
-                GameManager.ins.bossDead = true;
-        }
+    private void OnTriggerEnter(Collider other) {
+    if (other.gameObject.tag =="PlayerBullet"){
+        currentHealth-=30;
+        bossHealthController.SetBossHealth(currentHealth);
+        if(currentHealth<0){
+            Destroy(gameObject);
+            GameManager.ins.bossDead = true;
+            }
         }
     }
-
 }
